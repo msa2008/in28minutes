@@ -1,0 +1,17 @@
+#Student RESTful Web Service
+
+##URIs
+GET 	/students 		<--get all list of students
+GET 	/students/{id} 	<--get single student by id
+POST 	/students		<--add single student
+PUT		/students/{id}	<--update single student by id
+DELETE	/students/{id}	<--delete single student by id
+
+
+
+## development activity contents
+Exception Handling
+Validations
+i18n
+Content Negotiation for support of XML
+HATEOAS
