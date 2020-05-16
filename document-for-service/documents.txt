@@ -1,12 +1,14 @@
 #Student RESTful Web Service
 
 ##URIs
-GET 	/students 		<--get all list of students
-GET 	/students/{id} 	<--get single student by id
-POST 	/students		<--add single student
-PUT		/students/{id}	<--update single student by id
+GET 	/students 		<--get all list of students: internally HTTP status CODE:200 OK -->if not found then 404
+GET 	/students/{id} 	<--get single student by id: internally HTTP status CODE:200 OK 
+							-->if not found then HttpStatus.NotFound 404 and throw StudentNotFoundException
+POST 	/students		<--create single student-->Return 	HttpStatus.CREATED 201 and URI where resource created
+PUT		/students		<--update single student by id
 DELETE	/students/{id}	<--delete single student by id
 
+GET 	/students/{id}/subjects		<--get all subject by student id 
 
 
 ## development activity contents
