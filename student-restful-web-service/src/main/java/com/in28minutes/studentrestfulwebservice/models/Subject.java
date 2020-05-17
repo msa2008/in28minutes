@@ -1,6 +1,13 @@
 package com.in28minutes.studentrestfulwebservice.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Subject {
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String name;
 	private Integer maxMarks;
@@ -8,6 +15,12 @@ public class Subject {
 	public Subject() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Subject(String name, Integer maxMarks) {
+		super();
+		this.name = name;
+		this.maxMarks = maxMarks;
 	}
 
 	public Subject(Integer id, String name, Integer maxMarks) {

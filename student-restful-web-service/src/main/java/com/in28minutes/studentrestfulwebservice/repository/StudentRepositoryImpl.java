@@ -20,9 +20,9 @@ public class StudentRepositoryImpl implements StudentRepository {
 			new Subject(14, "Chemistry", 100));
 
 	static {
-		students.add(new Student(1, "mayur", "wagholi", new Date(), groupA));
+	/*	students.add(new Student(1, "mayur", "wagholi", new Date(), groupA));
 		students.add(new Student(2, "teju", "wagholi", new Date(), groupB));
-		students.add(new Student(3, "vibhav", "alephata", new Date(), groupA));
+		students.add(new Student(3, "vibhav", "alephata", new Date(), groupA));*/
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 				s.setAddress(student.getAddress());
 				s.setDob(student.getDob());
 				s.setName(student.getName());
-				s.setSubjects(student.getSubjects());
+				//s.setSubjects(student.getSubjects());
 				return;
 			}
 		}
