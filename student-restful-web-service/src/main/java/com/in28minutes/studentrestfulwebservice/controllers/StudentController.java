@@ -42,20 +42,24 @@ public class StudentController {
 	// GET /students/{id} <--get single student by id
 	@GetMapping(value = "/students/{id}")
 	public Student getAllById(@PathVariable Integer id) {
-		Student student = studentService.getAllById(id);
-		if (student == null)
-			throw new StudentNotFoundException("User not found with id:" + id);
-		
-	/*	Dynamic Filter code
-	 * 
-	 * SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.serializeAll();// .filterOutAllExcept("id");
-		FilterProvider filters = new SimpleFilterProvider().addFilter("SomeBeanFilter", filter);
-		MappingJacksonValue mapping = new MappingJacksonValue(student);
-		mapping.setFilters(filters);*/
 
-		
+		Student student = studentService.getAllById(id);
+		//System.out.println(student);
+		if (student == null)
+			throw new StudentNotFoundException("User not found with 1id:" + id);
+
+		/*
+		 * Dynamic Filter code
+		 * 
+		 * SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.serializeAll();//
+		 * .filterOutAllExcept("id"); FilterProvider filters = new
+		 * SimpleFilterProvider().addFilter("SomeBeanFilter", filter);
+		 * MappingJacksonValue mapping = new MappingJacksonValue(student);
+		 * mapping.setFilters(filters);
+		 */
+
 		return student;
-		//return mapping;
+		// return mapping;
 	}
 
 	// POST /students <--add single student
