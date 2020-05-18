@@ -12,8 +12,17 @@ GET 	/students/{id}/subjects		<--get all subject by student id
 
 
 ## development activity contents
+-----------------16May2020-----------------
 Exception Handling
 Validations
+Student resources created 
+------------------17May2020-----------------------------
+Adding H2 db, Create JPA Repository
+Static and Dynamic filtering
+------------------nextday-----------------------------
 i18n
 Content Negotiation for support of XML
 HATEOAS
+Swagger
+Spring Boot Actuator
+WEbService Version-ing

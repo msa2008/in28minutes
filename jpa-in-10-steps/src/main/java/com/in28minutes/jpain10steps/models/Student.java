@@ -1,4 +1,4 @@
-package com.in28minutes.studentrestfulwebservice.models;
+package com.in28minutes.jpain10steps.models;
 
 import java.util.Date;
 import java.util.List;
@@ -10,16 +10,12 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
-/*@JsonFilter("SomeBeanFilter")   <----------for dynamic filtering*/
 public class Student {
 
+	@Pattern(regexp = "[\\s]*[0-9]*[1-9]+", message = "id must be postive number")
 	@Id
 	@GeneratedValue
-	/*@Pattern(regexp = "[\\s]*[0-9]*[1-9]+", message = "id must be postive number")*/	
 	private Integer id;
 
 	@Size(min = 2, message = "minimum size should be {min}")
@@ -28,35 +24,24 @@ public class Student {
 	@Size(min = 2, message = "minimum size should be {min}")
 	private String address;
 
-	@Past(message = "date must be previous date")
-	private Date dob;
-	//private List<Subject> subjects;
-
+/*	@Past(message = "date must be previous date")
+	private Date dob;*/
+	
 	public Student() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Student(String name, String address, Date dob) {
-		super();	
-		this.name = name;
-		this.address = address;
-		this.dob = dob;		
-	}
-	
-/*	public Student(Integer id, String name, String address, Date dob, List<Subject> subjects) {
+	public Student( String name, String address, Date dob) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.address = address;
-		this.dob = dob;
-		this.subjects = subjects;
-	}*/
+		//this.dob = dob;
+	}
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", address=" + address + ", dob=" + dob + /*", subjects="
-				+ subjects +*/ "]";
+		return "Student [id=" + id + ", name=" + name + ", address=" + address + /*", dob=" + dob + */"]";
 	}
 
 	public Integer getId() {
@@ -83,7 +68,7 @@ public class Student {
 		this.address = address;
 	}
 
-	public Date getDob() {
+/*	public Date getDob() {
 		return dob;
 	}
 
@@ -91,12 +76,6 @@ public class Student {
 		this.dob = dob;
 	}
 
-	/*public List<Subject> getSubjects() {
-		return subjects;
-	}
-
-	public void setSubjects(List<Subject> subjects) {
-		this.subjects = subjects;
-	}*/
+	*/
 
 }
