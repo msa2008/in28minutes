@@ -27,6 +27,37 @@ Swagger
 Spring Boot Actuator
 WEbService Version-ing
 
-
-
+We can Say tool of Cloud 
+=========================================================================================================
 Feign <-- is Rest web service client
+Steps to use 
+Step 1. Add dependency 			
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			
+Step 2. @EnableFeignClients("com.in28minutes.currencyconversionservice")
+
+Ex. 
+			package com.in28minutes.currencyconversionservice;
+
+			import org.springframework.boot.SpringApplication;
+			import org.springframework.boot.autoconfigure.SpringBootApplication;
+			import org.springframework.cloud.openfeign.EnableFeignClients;
+
+			@SpringBootApplication
+			@EnableFeignClients("com.in28minutes.currencyconversionservice")
+			public class CurrencyConversionServiceApplication {
+			}
+			
+Step 3. @FeignClient
+
+		Create proxy of service client which you want and Use annotation
+	
+Ex. 	@FeignClient(name = "currency-exchange-service", url = "localhost:8001")
+		public interface CurrencyExchangeServiceProxy {
+			@GetMapping(value = "currency-exchange/from/{from}/to/{to}")
+			public ExchangeValue retriveExchangeValue(@PathVariable("from") String from, @PathVariable("to") String to);
+		}
+
+
+		
