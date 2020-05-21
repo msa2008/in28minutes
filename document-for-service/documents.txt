@@ -59,5 +59,81 @@ Ex. 	@FeignClient(name = "currency-exchange-service", url = "localhost:8001")
 			public ExchangeValue retriveExchangeValue(@PathVariable("from") String from, @PathVariable("to") String to);
 		}
 
+=========================================================================================================
+Ribbon <--------client-side load balancer	<- Ribbon provides client side load balancing facility
+Step 1. 	<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+	
+Step 2. 	@FeignClient(name = "currency-exchange-service")
+			@RibbonClient(name = "currency-exchange-service")
+			public interface CurrencyExchangeServiceProxy {
+				@GetMapping(value = "currency-exchange-service/from/{from}/to/{to}")
+				public ExchangeValue retriveExchangeValue(@PathVariable("from") String from, @PathVariable("to") String to);
+			}
 
-		
+	
+	
+Step 3. 	In property file: currency-conversion-service property file
+	
+			currency-exchange-service.ribbon.listOfServers=http://localhost:8000,http://localhost:8001
+			
+Problem with Ribbon 
+				What if one or more client of currency-exchange-service needed ?
+				we have to start that other clients on remaining port numbers like 8002/3/4/5
+				and add in property file currency-conversion-service property file
+				(AND THIS is the problem we have to restart server)
+				Means head ace when number of currency-exchange-service increases/decreases.
+				
+				Can we use spring cloud config server to solve above problem.? 
+				But we have to refresh (POST call to ) currency-conversion-service to reflect changes.
+=========================================================================================================			
+Eureka Server <-- Naming server (Service discovery)-- Naming Server provides Service Registration and Service= Discovery
+
+Step 1. 	depenencies 
+				Eureka server, config client(for storing propeties to cloud server),
+				actuator, devtools
+				
+Step 2.  
+			@SpringBootApplication
+			@EnableEurekaServer
+			public class DiscoveryServerApplication {
+
+				public static void main(String[] args) {
+					SpringApplication.run(DiscoveryServerApplication.class, args);
+				}
+
+			}
+
+Step 3. 	application.properties
+			server.port=8761
+			eureka.client.register-with-eureka=false <-- because server dont register himself as client
+			eureka.client.fetch-registry=false
+
+Step 4. Check http://localhost:8761
+
+			***************************Now Setting up Eureka Client***************************
+					currency-exchange-service:8000
+					currency-exchange-service:8001
+					currency-exchange-service:8002
+					currency-conversion-service:8100
+					
+					All above are Eureka Clients
+Step 1. 	
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+
+Step 2. 			
+			
+			@SpringBootApplication
+			@EnableEurekaClient//@EnableDiscoveryClient
+			@EnableFeignClients("com.in28minutes.currencyconversionservice")
+			public class CurrencyConversionServiceApplication {
+			}
+Step 3. 
+			add property in client properties
+			eureka.client.service-url.default-zone:http://locahost:8761/eureka		
+				
+			***************************Eureka Client and Ribbon ---Connection***************************	
+			As we know both Eureka Client and Ribbon, are using on client 
+			Ribbon discovers other clients using property 
+				currency-exchange-service.ribbon.listOfServers=http://localhost:8000,http://localhost:8001
+			DISBLE above PROPERTY to use Eureka SERVER

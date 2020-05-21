@@ -19,7 +19,7 @@ public class CurrencyExchangeController {
 	@Autowired
 	private CurrencyExchangeJpaRepository currencyExchangeJpaRepository;
 	
-	@GetMapping(value = "currency-exchange/from/{from}/to/{to}")
+	@GetMapping(value = "currency-exchange-service/from/{from}/to/{to}")
 	public ExchangeValue retriveExchangeValue(@PathVariable String from, @PathVariable String to) {
 		System.out.println("currency-exchange: from=:"+from);
 		ExchangeValue exchangeValue = currencyExchangeJpaRepository.findByFromAndTo(from,to);				
