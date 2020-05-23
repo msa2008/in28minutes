@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +19,12 @@ import com.in28minutes.currencyconversionservice.service.CurrencyExchangeService
 
 @RestController
 public class CurrencyConversionController {
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	private CurrencyExchangeServiceProxy proxy;
 
-	@GetMapping("/currency-conversion-service/from/{from}/to/{to}/quantity/{quantity}")
+	@GetMapping("/ccs/from/{from}/to/{to}/quantity/{quantity}")
 	public CurrencyConversionBean convertToCurrency(@PathVariable String from, @PathVariable String to,
 			@PathVariable BigDecimal quantity) {
 		System.out.println("quantity------------" + quantity);
@@ -29,7 +32,7 @@ public class CurrencyConversionController {
 		uriVariables.put("from", from);
 		uriVariables.put("to", to);
 		ResponseEntity<ExchangeValue> responseEntity = new RestTemplate().getForEntity(
-				"http://localhost:8001/currency-exchange/from/{from}/to/{to}", ExchangeValue.class, uriVariables);
+				"http://localhost:8001/ces/from/{from}/to/{to}", ExchangeValue.class, uriVariables);
 
 		CurrencyConversionBean currencyConversionBean = new CurrencyConversionBean();
 		if (responseEntity != null) {
@@ -50,7 +53,7 @@ public class CurrencyConversionController {
 	}
 	
 	
-	@GetMapping("/currency-conversion-service-feign/from/{from}/to/{to}/quantity/{quantity}")
+	@GetMapping("/ccs-feign/from/{from}/to/{to}/quantity/{quantity}")
 	public CurrencyConversionBean convertToCurrencyfeign(@PathVariable String from, @PathVariable String to,
 			@PathVariable BigDecimal quantity) {
 		System.out.println("quantity------------" + quantity);
@@ -58,6 +61,7 @@ public class CurrencyConversionController {
 		
 		ExchangeValue exchangeValue  = proxy.retriveExchangeValue(from, to);
 	
+		logger.info("ccs - exchangeValue : {}", exchangeValue);
 		CurrencyConversionBean currencyConversionBean = new CurrencyConversionBean();
 		if (exchangeValue != null) {
 
