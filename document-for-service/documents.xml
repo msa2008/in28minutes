@@ -346,4 +346,7 @@ Step 1.		<dependency>
 Step 2.		@SpringBootApplication
 			@EnableHystrix
 
-Step 3.		@HystrixCommand(fallbackMethod="")   <-- on @RestController method 				
+Step 3.		@HystrixCommand(fallbackMethod="")   <-- on @RestController method
+===================================================================================
+Calling service from cmd 
+>java  -Dserver.port=8090 -jar servicename.jar

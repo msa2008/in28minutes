@@ -1,0 +1,86 @@
+
+"Defination": "Microservices are distributed, loosely coupled software services that carry out a small number of well-defined tasks.",
+"Info": "This book is about building microservice-based applications using Spring Boot and Spring Cloud that can be deployed to a private cloud run by your company or a public cloud such as Amazon, Google, or Pivotal."
+
+three basic models exist in cloud-based computing, These are 
+ Infrastructure as a Service (IaaS)
+ Platform as a Service (PaaS)
+ Software as a Service (SaaS)
+
+new cloud platform types are emerging. These new platforms
+include Functions as a Service (FaaS) and Container as a Service (CaaS). FaaS-based
+(https://en.wikipedia.org/wiki/Function_as_a_Service) applications use technologies
+like Amazon’s Lambda technologies and Google Cloud functions to build applications
+deployed as “serverless” chunks of code that run completely on the cloud
+provider’s platform computing infrastructure. With a FaaS platform, you don’t have to
+manage any server infrastructure and only pay for the computing cycles required to
+execute the function.
+
+Virtual containers run inside a virtual machine; using a virtual container, you can segregate a single virtual machine into a series of self-contained processes that share the same virtual machine image.
+
+Horizontal Scalability means adding more servers and service instances for your applications.
+
+Server elasticity also means that your applications can be more resilient. If one of your microservices is having problems and is falling over, spinning up new service instances can you keep your application alive long enough for your development team to gracefully resolve the issue.
+
+Docker is deployable to all the major cloud providers.
+
+
+++Running microservice involves more than writing the code for the service.
+Microservices are more than writing the code While the concepts around building individual microservices are easy to understand,
+running and supporting a robust microservice application (especially when running in the cloud) involves more than writing the code for the service.in the cloud) involves more than writing the code for the service.
+
+
+Writing a robust service oohh
+--Right-sized
+--Location transparent
+--Resilient
+--Repeatable
+--Scalable
+============================================================================================
+Specifically, we cover the following six categories of microservice patterns:
+#Core development patterns
+		-->Service granularity:
+		-->Communication protocols:
+		-->Interface design:
+		-->Configuration management:
+		-->Event processing
+
+# Routing patterns
+		-->Service discovery— Service discovery abstracts away the physical location of the service from the client. New microservice instances can be added to scale up, and unhealthy service instances can be transparently removed from the service.
+		
+		-->Service routing—Service routing gives the microservice client a single logical URL to talk to and acts as a policy enforcement point for things like authorization,
+		authentication, and content checking.
+
+		(first comes service routing and the service discovery).
+			request--->service routing--->service discovery
+
+# Client resiliency patterns
+		-->Client-side load balancing—
+		-->Circuit breakers pattern
+		-->Fallback pattern—
+		-->Bulkhead pattern
+
+# Security patterns
+		-->Authentication
+		-->Authorization
+		-->Credential management and propagation
+
+# Logging and tracing patterns
+		-->Log correlation—All service log entries have a correlation ID that ties the log entry to a single transaction
+		-->Log aggregation-An aggregation mechanism collects all of the logs from all the services instances.
+		-->Microservice tracing—The development and operations teams can query the log data to find individual transactions. They should also be able to visualize the flow of all the services involved in a transaction.
+
+
+# Build and deployment patterns
+		-->Build and deployment pipeline—
+		-->Infrastructure as code—
+		-->Phoenix servers
+===========================================================================================
+Read from book
+1.10.2 Spring Cloud Config
+1.10.3 Spring Cloud service discovery
+1.10.4 Spring Cloud/Netflix Hystrix and Ribbon
+1.10.5 Spring Cloud/Netflix Zuul
+1.10.6 Spring Cloud Stream
+1.10.7 Spring Cloud Sleuth
+1.10.8 Spring Cloud Security
