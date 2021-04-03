@@ -1,0 +1,5 @@
+how to configure maven project in jenkins
+https://medium.com/@anusha.sharma3010/build-a-simple-maven-project-in-jenkins-da7a2a4ae202
+
+video for maven project, git and jenkins
+https://www.youtube.com/watch?v=jfM1GiTOHSc

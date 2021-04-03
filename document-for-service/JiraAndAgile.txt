@@ -1,0 +1,19 @@
+4-valuess 
+12 principals
+sprint - is time period usually between 1-4 weeks(in this individual plan work with product owner and scrum master )
+at end of sprint we deliver small or increment product.
+product owner-
+Scrum Master
+Development Team-qa,ba,acrtitect, developers except above two
+Role scrum master-run daily stand ups,arranign sprint planniing meeting, sprint review, retrospective
+Backlog grooming(Backlog refinement )
+
+
+========================================
+JIRA Agile managing tool
+Jira Core --it is for issue tracking (how it flowing from start to end) it base Jira tool, you can use it for task management
+Jira Software = Jira Core + Some other functionality, we can track software project with agile methodology
+Jira Service Desk : for service help desk
+Confluence- for managing documentation 
+Stride-team communtication tool just like slack
+BitBucket:-mangeing code repository

@@ -1,0 +1,34 @@
+PROJECT Name: IVR Email and COTS account migration
+Duration: April-2019 to December-2019
+Environment: J2EE, JSP, Spring MVC, HTML, Oracle, WEbSphere. 
+Description:
+	Currently bank service capable to provide Account balance summery, Account statement, Exchange/Deposite rates, Fund transfer advice, Bank/Branch information are provided through Fax medium. Goal of this project is to provide Email services for the above mentioned functionalities. Client can revecive this information to their registered email ID.
+
+Responsibilites:
+Involved in Requirement Analysis, Developing, Testing and Deployment of the components. 
+Implemented DAO, Controllers, Services classes. 
+Owning, tracking and reporting of all the problem tickets and change requests. 
+Initiating and attending the Bridge-calls during development, Testing and production issues and during deployment 
+Assisting in Unit, End to End and Functional testing.
+
+
+
+Title:	ASIA BSI SSO Implementation 
+Duration: Novermber-2019 to till date	
+Enviroment: J2EE, JSP, Spring MVC, HTML, Oracle, WebSphere.
+Project Description: Currently internal applications are accessed through specific internal portal. This portal is responsible for authentication and autherization. Company has decided to implement SSO based authentication. 
+Resposibilities: 
+	•	Involved in Developing, Testing and Deployment of the components. 
+	•	Implemented classes and change classes required for application. 
+	•	Owning, tracking and reporting of all the problem tickets and change requests. 
+	•	Initiating and attending the Bridge-calls during development, Testing and production issues and during deployment 
+	•	Assisting End to End and Functional testing.
+
+
+SSO===
+J2EE:
+JSP:
+Spring MVC
+Oracle:12c
+WEbSphere:8.5.5.13
+Java:1.7

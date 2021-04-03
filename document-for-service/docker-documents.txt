@@ -1,0 +1,110 @@
+Tejaswini@Tejaswini MINGW64 /c/Program Files/Docker Toolbox
+$ docker --version
+Docker version 18.03.0-ce, build 0520e24302
+
+https://hub.docker.com/
+
+Tejaswini@Tejaswini MINGW64 /c/Program Files/Docker Toolbox
+$ docker run hello-world
+
+https://hub.docker.com/r/in28min/todo-rest-api-h2
+
+hub.docker.com<---is docker registry which contain lots of repositories, multiple versions. These repositories are public/private types
+example of repository is "in28min/todo-rest-api-h2" is repository
+
+Tejaswini@Tejaswini MINGW64 /c/Program Files/Docker Toolbox
+$ docker run in28min/todo-rest-api-h2:1.0.0.RELEASE
+when run above command if images is not present locally then it is downloaded
+and run application 
+
+image is set of bytes present in locally or in registry/repository
+when images downloaded then also it is just set of bytes.
+Container is running version of your image
+
+Tejaswini@Tejaswini MINGW64 /c/Program Files/Docker Toolbox
+$ docker run -p 5000:5000 in28min/todo-rest-api-h2:1.0.0.RELEASE
+
+here=> -p {hostport}:{containerport}
+hostport<-- port specified in application.properites
+contianer port<--- is port on which you want to run application
+
+
+docker run -p {hostport}:{containerport} 			{repostiotry}:{tag or version}
+docker run -p 5000:5000 				 in28min/todo-rest-api-h2:1.0.0.RELEASE
+
+docker run -p 5001:5000 -d in28min/todo-rest-api-h2:1.0.0.RELEASE
+
+-d<==for detached, means run container in background, means control+c not stop container
+
+$ docker logs containerId   <=====to print logs
+$ docker logs -f containerId
+$ docker container ls
+$ docker images <--images created in my machine, local to us
+$ docker pull in28min/todo-rest-api-h2:1.0.0.RELEASE   <-- pul images from docker hub
+$ docker container ls -a  <--shows all container created/exited all
+$ docker container stop containerid
+
+					docker client
+						|
+						|
+					docker daemon	
+	|							| 				|
+Container/Engine 			Local Image 	Images Registry			
+
+
+docker daemon --maneges local stuff, pulling/pushing from/to images from repostory, creating images
+
+=========================
+$docker tag repositoryname:tag repositoryname:newTag  <--new tag crated for same repo.
+$docker tag repositoryname:tag repositoryname:latest
+$docker pull mysql		<-- it wil pull latest version, pull command downloads images to local repo
+
+$docker search mysql
+
+$ docker history in28min/todo-rest-api-h2:1.0.0.RELEASE
+$ docker history imageid
+$ docker inspect imageid 
+$ docker image remove imageid <--remove image from local
+=======================================================
+$ docker run -p 5001:5000 -d in28min/todo-rest-api-h2:1.0.0.RELEASE
+$ docker container run -p 5001:5000 -d in28min/todo-rest-api-h2:1.0.0.RELEASE
+	BOth above command are same first one short cut
+$ docker container pause containerUniqueId
+$ docker container unpause containerUniqueId
+$ docker container stop containerid
+$ docker container inspect containerid
+$ docker container ls -a 
+$ docker container prune  <-- remove all stopped container
+$ docker container stop containerid <---SIGTERM , graseful tremination
+$ docker container kill containerid <---SIGKILL , immedialty termination
+$ docker container -p 5000:5000 -d --restart=always appReponame:tagName
+		--restart=always; restart policy always means always start when daemon start
+		--restart=no; default is no 
+$ docker events				<--open inseperate tag to check events 
+$ docker top containerid   <--- gives to running process in conttainer 		
+$ docker stats
+$ docker container -p 5000:5000 -m 512m --cpu-quota 5000 -d --restart=always appReponame:tagName
+
+above command 512Mb used space it is MAX space for application, 5% CPU quota, 100% CPU quota is 100000
+
+$ docker system df
+
+$ docker build -f Dockerfile -t myapp .       
+Above command explanation -f is for file which file to build, -t is for name for tag
+also you can specify tag:version number also
+
+
+SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Links
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Docker tutorial by Edureka 
+https://www.youtube.com/watch?v=RSIstPUiEjY
+
+Java Techie
+https://www.youtube.com/watch?v=2v0-aIO_R08
+
+Ranaga: Search video: Learn Docker in 5 Steps - Tutorial For Beginners
+https://www.youtube.com/watch?v=Rt5G5Gj7RP0link to course:https://github.com/in28minutes/docker-crash-course
+https://github.com/in28minutes/docker

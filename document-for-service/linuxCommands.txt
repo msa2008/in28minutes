@@ -1,0 +1,7 @@
+$ cp * /tmp/mayur		copy dir 
+$ mkdir mayur			create dir
+$ ls | wc -l			count file 
+$ cd /								move to root
+$ mv previousNmae newName			//change name of dir
+$ ls | grep \.ksh$					//list file which having .ksh extenstion
+$ ls *.{ksh,txt}					//list file which having .ksh, .txt extenstion

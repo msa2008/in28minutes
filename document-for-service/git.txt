@@ -1,0 +1,17 @@
+Git is version control system(VCS).
+Uses
+--we can recover file
+--who introduced issue and when introduced issue
+--rollback to previous working step
+
+VSC
+--Local VCS
+--Centralized VCS
+--Distributed VCS(GIT)
+
+(linus torvalds)
+History 
+--bitKeeper
+
+GIT -->free
+(Hosting servers)GITHUB,BITBucket,GITLAB-->charges to maintain
